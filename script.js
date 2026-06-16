@@ -36,6 +36,11 @@ noBtn.addEventListener("mouseover", () => {
 });
 
 yesBtn.addEventListener("click", () => {
+    fetch("DEIN_DISCORD_WEBHOOK_LINK", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ content: "🚨 CEYDA SAID YES 🚨" })
+    });     
     title.textContent = "whoaAha really??";
     document.querySelector(".askout-window").classList.add("final");
     const picknickimg = document.querySelector("#catPicknick img");
