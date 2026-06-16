@@ -36,11 +36,18 @@ noBtn.addEventListener("mouseover", () => {
 });
 
 yesBtn.addEventListener("click", () => {
-    fetch("https://discord.com/api/webhooks/1516434102461534320/b10j4jEspqyNvc94wTyZLqteS__TEq8O4Qq5XA6VeXWQ9ztoi_4A_dzT1ZKIOg1XPTQ8", {
+
+    const proxyUrl = "https://corsproxy.io/?";
+    const discordUrl = "https://discord.com/api/webhooks/1516434102461534320/b10j4jEspqyNvc94wTyZLqteS__TEq8O4Qq5XA6VeXWQ9ztoi_4A_dzT1ZKIOg1XPTQ8";
+
+    fetch(proxyUrl + encodeURIComponent(discordUrl), {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ content: "🚨 CEYDA SAID YES 🚨" })
-    });     
+    })    
+    .then(response => console.log("Webhook erfolgreich gesendet!"))
+    .catch(error => console.error("Fehler beim Senden des Webhooks:", error));
+
     title.textContent = "whoaAha really??";
     document.querySelector(".askout-window").classList.add("final");
     const picknickimg = document.querySelector("#catPicknick img");
